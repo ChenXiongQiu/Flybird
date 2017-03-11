@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="cv"></canvas>
+	
+	<!-- 引入 全局对象 -->
+	<script src="js/Fly.js"></script>
+	<!-- 引入 小鸟（英雄） -->
+	<script src="js/birds.js"></script>
+	<!-- 引入 天空背景 -->
+	<script src="js/sky.js"></script>
+	<!-- 引入 陆地背景 -->
+	<script src="js/land.js"></script>
+	<!-- 引入 管道对象 -->
+	<script src="js/pipe.js"></script>
+	<!-- 引入 游戏（世界）对象 -->
+	<script src="js/Game.js"></script>
+	
+	<script>
+		var cv = document.querySelector('#cv');
+		cv.width = 800;
+		cv.height = 600;
+		// cv.style.border = '1px solid red';
+
+		var toRadian = function(angle) {
+			return angle / 180 * Math.PI;
+		};
+		
+		var ctx = cv.getContext('2d');
+
+		new Fly.Game({
+			context: ctx
+		})
+		.startGame();
+
+
+		// 优化：
+		// 
+		// 1 将所有的变量修改为 构造函数中的属性
+		// 2 将绘制操作，放到原型方法中（一个方法）
+		// 3 修改代码让游戏能够跑起来
+		// 4 再将每一个功能抽离为一个方法
+	</script>
+</body>
+</html>
